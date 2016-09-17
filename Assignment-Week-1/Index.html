@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="LunchApp">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+  <script src="scripts/angular.min.js"></script>
+  <script src="scripts/app.js"></script>
+  </head>
+<body>
+   <div class="container">
+   <hr />
+   <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+           <div class="panel panel-primary">
+               <div class="panel-heading">
+                   <h3 class="panel-title">Lunch Checker</h3>
+               </div>
+
+               <div class="panel-body">
+                    	<p class="help-block">
+        Have you ever noticed that something is wrong in you diet?. Well our experts are ready to lend you some help, just enter the food items that you have in lunch :)
+                      </p>
+                      <br>
+                      <div ng-controller="LunchCheckController">
+                				<form ng-submit="lunchCheck()" novalidate>
+                				<div class="form-group" ng-class="{'has-error': hasError, 'has-success': status == 1, 'has-warning': status == 2}">
+                					<label class="control-label">I usually have...</label>
+                					<input type="text" class="form-control" ng-model="lunchContents" placeholder=" Water,rice,fish;" required>
+                					<p class="help-block" ng-show="hasError">{{errorMessage}}</p>
+                				</div>
+                				<div class="alert alert-danger" ng-if="empty_items">
+                				<p>
+                				 You added {{empty_items|number:0}} blank <ng-pluralize count="empty_items" when="{1:'item','other':'items'}"></ng-pluralize> !
+                				</p>
+                				</div>
+                				<button type="submit" class="btn btn-primary">Check if too much</button>
+                				</form>
+                   <div class="col-xs-12 col-sm-6">
+                   <div id="lunchFeedback" ng-hide="status == 0" ng-cloak>
+                   <div class="alert alert-success" ng-show="status == 1">
+                   <h4>Enjoy!</h4>
+                   <p>You have Healthy lunch</p>
+                   </div>
+                   		<div class="alert alert-warning" ng-show="status == 2">
+                      	<h4>Too Much!</h4>
+                        <p>You have un Healthy lunch</p>
+                      </div>
+                   </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+   </div>
+
+</div>
+</body>
+</html>

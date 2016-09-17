@@ -1,1 +1,4 @@
-assignment week one
+ *************Assignment week one ************
+
+Simple app for lunch checker
+
