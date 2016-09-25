@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="TayoShop">
+  <head>
+    <title>Tayo Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+   <script src="scripts/angular.min.js"></script>
+   <script src="scripts/app.js"></script>
+  </head>
+<body>
+   <div class="container">
+   <hr />
+   <div class="row">
+       <div class="col-md-8 col-md-offset-2">
+           <div class="panel panel-primary">
+               <div class="panel-heading">
+                   <h3 class="panel-title">Tayo Shop</h3>
+               </div>
+
+               <div class="panel-body">
+                    	<p class="help-block">
+        Discover the latest :)
+                      </p>
+                      <br>
+                      <div ng-controller="PurchaseCtrl as Purchase">
+                  		<div class="panel panel-primary">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">To Buy</h4>
+                        </div>
+                        		<ul class="list-group">
+                              <li class="list-group-item" ng-if="Purchase.list.length === 0">Everything is bought!</li>
+                							<li class="list-group-item" ng-repeat="item in Purchase.list">
+                							Buy {{item.quantity|number}} {{item.name}}
+                							<button type="button" class="btn btn-xs btn-primary pull-right" ng-click="Purchase.item($index)">Bought</button>
+                            </li>
+                            </ul>
+                      </div>
+
+                   <div class="col-xs-12 col-sm-6">
+<div class="panel panel-default" ng-controller="BoughtCtrl as Bought">
+  <div class="panel-heading">
+    <h4 class="panel-title">Already Bought</h4>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item" ng-if="Bought.list.length === 0">Nothing bought yet.</li>
+    <li class="list-group-item" ng-repeat="item in Bought.list">
+    Bought {{item.quantity|number}} {{item.name}}
+    </li>
+  </ul>
+</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+   </div>
+
+</div>
+</body>
+</html>
