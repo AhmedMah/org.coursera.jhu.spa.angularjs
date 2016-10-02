@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+  </head>
+  <body ng-app="NarrowItDownApp">
+    <div class="container" ng-controller="NarrowItDownController as narrowItDown">
+      <h1>Narrow Down Your Chinese Menu Choice</h1>
+      <div class="form-group">
+        <input type="text" ng-model="narrowItDown.searchTerm" placeholder="search term" class="form-control">
+      </div>
+      <div class="form-group narrow-button">
+        <button class="btn btn-primary" ng-click="narrowItDown.doSearchTerm()">Narrow It Down For Me!</button>
+      </div>
+
+      <!-- Bonus loader (see Bonus section of the assignment) -->
+      <items-loader-indicator></items-loader-indicator>
+
+      <!-- found-items should be implemented as a component -->
+      <found-items items="narrowItDown.found" on-remove="narrowItDown.removeItem(itemIndex)"></found-items>
+      <div class="alert alert-warning" ng-show="narrowItDown.shouldDisplayMessage">
+        <strong>Nothing found!</strong>
+      </div>
+    </div>
+  </body>
+</html>

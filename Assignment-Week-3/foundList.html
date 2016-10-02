@@ -1,0 +1,15 @@
+<div class="row results">
+  <div class="col-sm-6 col-md-3 item" ng-repeat=" item in items ">
+    <div class="thumbnail">
+      <img src="https://placehold.it/500x250/EEE">
+      <div class="caption">
+        <h4>{{ item.name }} <span class="badge">{{ item.short_name }}</span></h4>
+        <p>
+          <span class="label label-primary"> S {{ item.price_small | currency }}</span> <span class="label label-success"> L {{ item.price_large | currency }}</span>
+        </p>
+        <p>{{ item.description }}</p>
+        <button class="btn btn-danger btn-sm" ng-click="onRemove({itemIndex: $index})">Don't want this one!</button>
+      </div>
+    </div>
+  </div>
+</div>
