@@ -1,1 +1,2 @@
-# org.coursera.jhu.spa.angularjs
+# -- Single page web applications with angularjs  --
+
